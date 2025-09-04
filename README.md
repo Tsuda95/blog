@@ -7,10 +7,36 @@ This is my personal blog project built with:
 - MySQL database
 - Features: posting blogs, user comments, contact page
 
-Goal of this project:
--Deeper understanding of React, Node and MySQL.
+Learning goal of this project:
+-learning how to route
+-API
 
 Updates:
--Added Admin route to add remove. password for admin is apple
+-Added Admin route to add remove. 
 
 
+personal-blog/
+backend/
+    server.js          # Express server with API routes
+    db.js              # MySQL connection
+    package.json       # Node dependencies and scripts
+    .env               # Database credentials and PORT
+
+frontend/
+    package.json       # Frontend dependencies and scripts
+    vite.config.js     # Vite configuration
+    src/
+        main.jsx       # React entry point
+        App.jsx        # Routing setup
+        index.css      # CSS
+        pages/
+            Home.jsx      # CV / homepage
+            Blog.jsx      # Blog + comments page
+            Contact.jsx   # Contact page
+            Admin.jsx     # Admin page to post blogs
+        components/
+            Header.jsx       # Navigation bar
+            Footer.jsx       # Footer
+            CommentForm.jsx  # Form for submitting comments
+
+README.md             
