@@ -9,7 +9,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-const adminPassword = "apple";
+const adminPassword = process.env.ADMIN_PASSWORD;
+
 
 // GET all blog posts
 app.get('/api/posts', (req, res) => {
@@ -45,6 +46,21 @@ app.post('/api/comments', (req, res) => {
         if(err) return res.status(500).json({error: err});
         res.json({success: true});
     });
+});
+
+// PUT a post
+app.put('/api/posts/:id', (req, res) => {
+    const postId = req.params.id;             // grab the post id from the URL
+    const { title, content } = req.body;      // new data from the client
+
+    db.query(
+        'UPDATE posts SET title = ?, content = ? WHERE id = ?',
+        [title, content, postId],
+        (err, results) => {
+            if (err) return res.status(500).json({ error: err });
+            res.json({ success: true });
+        }
+    );
 });
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
