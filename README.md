@@ -9,10 +9,13 @@ This is my personal blog project built with:
 
 Learning goal of this project:
 -learning how to route
--API
+-Creating API in backend
+-Calling API in front end
+-
 
 Updates:
--Added Admin route to add remove. 
+-Added Admin route to add remove.
+-Admin feature to edit post.
 
 
 personal-blog/
