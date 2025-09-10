@@ -48,10 +48,14 @@ app.post('/api/comments', (req, res) => {
     });
 });
 
-// PUT a post
+// PUT a post (admin only)
 app.put('/api/posts/:id', (req, res) => {
-    const postId = req.params.id;             // grab the post id from the URL
-    const { title, content } = req.body;      // new data from the client
+    const postId = req.params.id;
+    const { title, content, password } = req.body;
+
+    if (password !== adminPassword) {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
 
     db.query(
         'UPDATE posts SET title = ?, content = ? WHERE id = ?',
@@ -62,5 +66,6 @@ app.put('/api/posts/:id', (req, res) => {
         }
     );
 });
+
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
