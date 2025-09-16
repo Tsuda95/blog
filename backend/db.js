@@ -1,4 +1,4 @@
-// db.js
+// db.js # mysql pool/connection (exported)
 const mysql = require('mysql2');
 
 const pool = mysql.createPool({

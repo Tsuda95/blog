@@ -1,4 +1,4 @@
-// controllers/commentController.js
+// controllers/commentController.js  # logic for comments
 const db = require('../db');
 
 exports.getComments = (req, res) => {

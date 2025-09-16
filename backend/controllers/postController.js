@@ -1,4 +1,4 @@
-// controllers/postController.js
+// controllers/postController.js # logic for posts (DB queries + responses)
 const db = require('../db');
 
 exports.getPosts = (req, res) => {

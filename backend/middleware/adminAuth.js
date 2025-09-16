@@ -1,4 +1,4 @@
-// middleware/adminAuth.js
+// middleware/adminAuth.js  # reusable admin auth middleware
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 module.exports = function requireAdmin(req, res, next) {
