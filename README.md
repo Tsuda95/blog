@@ -11,7 +11,7 @@ Learning goal of this project:
 -learning how to route
 -Creating API in backend
 -Calling API in front end
--
+-creating routes/controller and 
 
 Updates:
 -Added Admin route to add remove.
