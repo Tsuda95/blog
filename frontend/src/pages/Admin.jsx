@@ -41,7 +41,7 @@ export default function Admin() {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      const adminPassword = process.env.REACT_APP_ADMIN_PASSWORD;
+      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
 
       const res = await axios.post('http://localhost:5000/api/posts', {
         title: createTitle,
@@ -63,29 +63,32 @@ export default function Admin() {
   };
 
   // Handle editing an existing post
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    if (!selectedPost) return;
+const handleEdit = async (e) => {
+  e.preventDefault();
+  if (!selectedPost) return;
 
-    try {
-      const res = await axios.put(`http://localhost:5000/api/posts/${selectedPost.id}`, {
-        title: editTitle,
-        content: editContent
-      });
+  try {
+    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD; // frontend env
 
-      if (res.data.success) {
-        setMessage('Post updated successfully!');
-        setSelectedPost(null);
-        setEditTitle('');
-        setEditContent('');
-        fetchPosts();
-      } else {
-        setMessage('Failed to update post.');
-      }
-    } catch (err) {
-      setMessage('Error: ' + (err.response?.data?.error || err.message));
+    const res = await axios.put(`http://localhost:5000/api/posts/${selectedPost.id}`, {
+      title: editTitle,
+      content: editContent,
+      password: adminPassword
+    });
+
+    if (res.data.success) {
+      setMessage('Post updated successfully!');
+      setSelectedPost(null);
+      setEditTitle('');
+      setEditContent('');
+      fetchPosts();
+    } else {
+      setMessage('Failed to update post.');
     }
-  };
+  } catch (err) {
+    setMessage('Error: ' + (err.response?.data?.error || err.message));
+  }
+};
 
   return (
     <div>
